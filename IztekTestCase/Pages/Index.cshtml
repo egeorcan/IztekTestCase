@@ -1,0 +1,32 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@{
+    var message = ViewData["Message"]?.ToString();
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    
+    <form method="post">
+        <div class="mb-3">
+            <label class="form-label">Please enter an input</label>
+            <input type="number" class="form-control" asp-for="CreateInputRequest.input"/>
+            <span class="text-danger" asp-validation-for="CreateInputRequest.input"></span>
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+
+    @if (!string.IsNullOrWhiteSpace(message))
+    {
+        <div class="alert alert-success" role="alert">
+            @message
+        </div>
+    }
+
+</div>
